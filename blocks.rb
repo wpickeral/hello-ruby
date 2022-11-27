@@ -8,3 +8,14 @@ p "nums: #{nums}"
 # .collect! will not return a new array, it will modified the array in place
 nums.collect! { |n| n * n }
 p "nums: #{nums}"
+
+person = {
+  first_name: "William",
+  last_name: "Pickeral",
+  city: "Columbus",
+  state: "Ohio"
+}
+
+person.each { |key, value| p "#{key}: #{value}" }
+person.each_key { |key| p key }
+person.each_value { |value| p value }
