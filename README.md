@@ -205,9 +205,11 @@ array_three_doubled = array_three.map(&double)
 
 #### Lambda
 
-Lambda is very similar to Proc. One major difference is that a Proc will stop function execution (return)
-Whereas, a lambda return to its calling method rather than returning immediately. Lambda will also throw and error the
-the incorrect number of
+Lambda is very similar to Proc. One major difference is that a Proc will return after it is called any no other code
+within the calling method will be processed.
+Whereas, a lambda will return to its calling method rather than returning immediately. Lambda expects a certain number
+of arguments and will also throw and error
+the the incorrect number of
 arguments are passed.
 
 Here is the same example using Lambda:
