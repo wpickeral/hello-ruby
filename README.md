@@ -470,3 +470,6 @@ Result
 Honk Honk!
 I'm driving a Corvette!
 ```
+
+**Important**: Ruby is not a multi inheritance language
+There can be only one superclass 
