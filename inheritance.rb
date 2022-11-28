@@ -15,7 +15,8 @@ end
 
 class RaceCar < Car
   def honk_horn
-    puts "Honk Honk! I'm driving a Corvette!"
+    super
+    puts "I'm driving a Corvette!"
   end
 end
 

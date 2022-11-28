@@ -431,5 +431,42 @@ end
 
 my_car = RaceCar.new('Chevy', 'Corvette', 2022)
 
-puts my_car.honk_horn # Honk Honk! I'm driving a Corvette! 
+puts my_car.honk_horn 
+```
+
+Result
+
+```
+Honk Honk! I'm driving a Corvette!
+```
+
+You can access methods or attributes from a superclass in Ruby using the `super` method
+This is useful when you need to override a method an also maintain functionality from the super class
+
+You must call the super class inside of the method that you want to use from the super class.
+
+For example let's say we wanted to keep the `honk_horn` method from `Car` and just add to it.
+
+We could do something link this:
+
+```ruby
+
+class RaceCar < Car
+  def honk_horn
+    super
+    puts "I'm driving a Corvette!"
+  end
+end
+
+my_car = RaceCar.new('Chevy', 'Corvette', 2022)
+
+puts my_car.honk_horn
+
+```
+
+Result
+
+```
+Honk Honk!
+I'm driving a Corvette!
 ```
