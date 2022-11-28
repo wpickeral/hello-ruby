@@ -151,6 +151,13 @@ Result
 "nums: [1, 4, 9, 16, 25]"
 ```
 
+Array.map will do the same thing
+
+```ruby
+nums = [1, 2, 3, 4, 5]
+nums.map { |n| n * n }
+```
+
 ### Blocks, Procs and Lambdas
 
 #### Block
@@ -165,12 +172,43 @@ end
 3.times { puts "This is block" }
 ```
 
-Result
+We can pass a block to a method as an argument and the method will execute the block.
+There are several ways to do this
 
 ```ruby
-"This is a block"
-"This is a block"
-"This is a block"
+
+def block_method
+  yield
+end
+
+# Call the method and pass a block
+block_method { puts "This is a block" }
+
+# We can also pass a block to a method and pass a parameter to the block
+def block_method_with_param
+  yield("This is a block")
+end
+
+block_method_with_param { |param| puts param }
+
+# We can also pass multiple parameters 
+
+def block_method_with_params
+  yield("This is a block", "This is another block")
+end
+
+block_method_with_params { |param1, param2| puts param1; puts param2 }
+
+# We can also pass a block without using the yield keyword
+
+def block_method_with_params(&block)
+  # &block is a proc
+  block.call("This is a block", "This is another block")
+end
+
+block_method_with_params { |param1, param2| puts param1; puts param2 }
+
+
 ```
 
 #### Proc
@@ -194,7 +232,7 @@ array_two_doubled = array_two.map { |n| n * 2 }
 array_three_doubled = array_three.map { |n| n * 2 } 
 ```
 
-Or we can create a new Proc to follow DRY
+Or we can create a new Proc to follow the DRY principle
 
 ```ruby
 double = Proc.new { |n| n * 2 }
@@ -205,12 +243,8 @@ array_three_doubled = array_three.map(&double)
 
 #### Lambda
 
-Lambda is very similar to Proc. One major difference is that a Proc will return after it is called and no other code
-within the calling method will be processed.
-Whereas, a lambda will return to its calling method rather than returning immediately. Lambda expects a certain number
-of arguments and will also throw and error if the incorrect number of arguments are passed.
-
-Here is the same example using Lambda:
+Lambda is very similar to Proc. A Proc will return after it is called. A lambda will return after it is
+called and will continue to execute the rest of the code in the calling method.
 
 ```ruby
 double = lambda { |n| n * 2 }
