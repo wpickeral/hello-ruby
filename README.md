@@ -149,4 +149,86 @@ Result
 
 ```ruby
 "nums: [1, 4, 9, 16, 25]"
+```
 
+### Blocks, Procs and Lambdas
+
+#### Block
+
+```ruby
+3.times do
+  puts "This is a block"
+end
+
+# This is also a block 
+
+3.times { puts "This is block" }
+```
+
+Result
+
+```ruby
+"This is a block"
+"This is a block"
+"This is a block"
+```
+
+#### Proc
+
+Procs are similar to blocks. The major difference is that Procs are true ruby
+objects, so we can do things like save them to variables.
+
+Let's say we want to double each value in this array.
+
+```ruby
+array_one = [1, 3, 5, 7, 9, 11]
+array_two = [2, 4, 6, 8, 10, 12]
+array_three = [3, 9, 12, 15, 18, 21]
+```
+
+We can accomplish this using blocks
+
+```ruby
+array_one_doubled = array_one.map { |n| n * 2 }
+array_two_doubled = array_two.map { |n| n * 2 }
+array_three_doubled = array_three.map { |n| n * 2 } 
+```
+
+Or we can create a new Proc to follow DRY
+
+```ruby
+double = Proc.new { |n| n * 2 }
+array_one_doubled = array_one.map(&double) # Since map expects a block we use "&" to convert the Proc to a block
+array_two_doubled = array_two.map(&double)
+array_three_doubled = array_three.map(&double)
+```
+
+#### Lambda
+
+Lambda is very similar to Proc. One major difference is that a Proc will stop function execution (return)
+Whereas, a lambda return to its calling method rather than returning immediately. Lambda will also throw and error the
+the incorrect number of
+arguments are passed.
+
+Here is the same example using Lambda:
+
+```ruby
+double = lambda { |n| n * 2 }
+array_one_doubled = array_one.map(&double)
+array_two_doubled = array_one.map(&double)
+array_three_doubled = array_one.map(&double)
+```
+
+### Classes
+
+```ruby
+
+class Person
+  def initialize(name)
+    @name = name # a class instance variable 
+  end
+end
+
+# An instance of Person
+user = Person.new("William")
+```
