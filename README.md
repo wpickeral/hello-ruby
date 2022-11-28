@@ -379,6 +379,57 @@ What about methods?
 2. Some methods are available to a single instance of a class
 3. Some methods are available everywhere
 
+### Class Inheritance
 
+Class inheritance is when one class takes on the methods and attributes of another class
 
+Here is a simple example. RaceCar can hook because it is a subclass of Car!
 
+```ruby
+
+class Car
+  def initialize(name, model, year)
+    @make = name
+    @model = model
+    @year = year
+  end
+
+  def honk_horn
+    puts "Honk Honk!"
+  end
+end
+
+# All cars honk, but not all cars go super fast!
+# Lets make a new class called RaceCar and inherit Car
+
+class RaceCar < Car
+end
+
+my_car = RaceCar.new('Chevy', 'Corvette', 2022)
+
+puts my_car.honk_horn # Honk Honk!
+```
+
+The less `<` tells `RaceCar` to inherit the properties and attributes from Car.
+
+**Mental model**: It looks like the RaceCar class is eating the Car if you visualize
+the `<` being a mouth. By eating the `Car` class, the `RaceCar` class takes on the `Car` class attributes and methods.
+
+#### Overide!
+
+You can overide a method on the inherited class which will replace the inherited version.
+
+Let's override the `honk_horn` method
+
+```ruby
+
+class RaceCar < Car
+  def honk_horn
+    puts "Honk Honk! I'm driving a Corvette!"
+  end
+end
+
+my_car = RaceCar.new('Chevy', 'Corvette', 2022)
+
+puts my_car.honk_horn # Honk Honk! I'm driving a Corvette! 
+```
