@@ -19,6 +19,97 @@ Assigning a variable
  p message
 ```
 
+#### String Interpolation
+
+```
+# Assign the variable
+message = "Hello, World!"
+
+p "This is a string #{message}"
+```
+
+#### Ranges
+
+- 1...10 is a range that does not include 10
+- 1..10 is a range that includes 10
+
+```ruby
+1...10.each { |i| p i }
+```
+
+### Conditionals
+
+#### For loops
+
+```ruby
+
+# unconventional for loop
+numbers = [1, 2, 3, 4, 5]
+for number in numbers
+  p number
+end
+
+# conventional for loop
+# The each method is a method that is available to all arrays
+
+numbers.each { |number| p number }
+
+# We can get the index of the array as well
+# The each_with_index method is a method that is available to all arrays
+
+numbers.each_with_index { |number, index| p "#{index}: #{number}" }
+```
+
+#### While loops
+
+```ruby
+i = 0
+while i < 5
+  p i
+  i += 1
+end
+```
+
+#### If statements
+
+```ruby
+
+if 1 < 2
+  p "Yes, it is!"
+else
+  p "No, it is not!"
+end
+```
+
+#### Unless statements
+
+```ruby
+
+unless 1 > 2
+  p "Yes, it is!"
+else
+  p "No, it is not!"
+end
+```
+
+#### Case statements
+
+```ruby
+age = 25
+case age
+when 0..2
+  p "baby"
+when 3..6
+  p "little child"
+when 7..12
+  p "child"
+when 13..18
+  p "youth"
+else
+  p "adult"
+end
+```
+
 ### Methods
 
 ```ruby

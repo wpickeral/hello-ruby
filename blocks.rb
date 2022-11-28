@@ -20,4 +20,7 @@ person.each { |key, value| p "#{key}: #{value}" }
 person.each_key { |key| p key }
 person.each_value { |value| p value }
 
-
+numbers = 1...10
+for number in numbers
+  p number
+end
