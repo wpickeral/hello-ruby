@@ -357,3 +357,28 @@ end
 # An instance of Person
 user = Person.new("William")
 ```
+
+#### More on variables
+
+Variables were introduced in the previous section. There are four types of variables in Ruby with different scopes.
+
+1. Local variables - only available in certain methods
+2. Instance variables - members of a certain class instance belonging to an instance of a class
+3. Class variables - members of a class belonging to a certain class not an instance
+4. Global variables - Anywhere in the program. Can also be changed from anywhere in the program. Not recommended.
+
+- local variables start with a lowercase letter or underscore `_`
+- instance variables start with an at sign `@`
+- class variables start with two at signs `@@`
+- global variables start with a dollar sign `$` if the variable is initialized in a method it will be global to the
+  entire program. If a variable is initialized outside of a method it will be global to the entire program by default.
+
+What about methods?
+
+1. Some methods are available to all instances of a class
+2. Some methods are available to a single instance of a class
+3. Some methods are available everywhere
+
+
+
+
