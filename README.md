@@ -509,7 +509,7 @@ p.first_name
 
 Result
 
-```ruby
+```
 undefined method `first_name' for #<Person:0x00000001448b8a40> (NoMethodError)
 ```
 
