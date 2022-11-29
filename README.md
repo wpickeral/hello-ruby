@@ -596,7 +596,7 @@ p = Person.new('Will', 'Pickeral')
 
 Let try to access the instance variables again
 
-```
+```ruby
 puts p.first_name
 ```
 
