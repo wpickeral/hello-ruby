@@ -474,4 +474,151 @@ I'm driving a Corvette!
 **Important**: Ruby is not a multi inheritance language
 There can be only one superclass
 
-### Class Mixins
+### Attribute Accessors
+
+Problem: We want to access an instance variable from outside of a class.
+Since we can only acccess instance variables from instance methods, we usually
+have to define public getter and setter methods to read or write to instance
+variables from outside of the class.
+
+Ruby provides a solution for this.
+
+1. attribute_reader - Read access
+2. attribute_writer - Write access
+3. attribute_accessor - Read & Write access
+
+```ruby
+
+class Person
+
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+
+end
+
+p = Person.new('Will', 'Pickeral')
+```
+
+This does not work
+
+```ruby
+p.first_name 
+```
+
+Result
+
+```ruby
+undefined method `first_name' for #<Person:0x00000001448b8a40> (NoMethodError)
+```
+
+Lets define methods to access instance variables.
+
+```ruby
+
+class Person
+
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+
+  def get_first_name
+    @first_name
+  end
+
+  def set_first_name(first_name)
+    @first_name = first_name
+  end
+
+end
+
+p = Person.new('Will', 'Pickeral')
+```
+
+Here we print the first name to the console
+
+```ruby
+puts p.get_first_name
+```
+
+Result
+
+```
+Will
+```
+
+Next we use the `set_first_name` method to update the name. We then
+call the `get_first_name` method again to print the updated name to the console.
+
+```ruby
+p.set_first_name("William")
+puts p.get_first_name
+```
+
+Result
+
+```
+William
+```
+
+Ruby makes read and writing instance variables much easier. Enter attribute accessors
+Lets make this class alot better.
+
+```ruby
+
+class Person
+
+  # New
+  attr_accessor :first_name
+  attr_accessor :last_name
+
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+
+  # We don't need these anymore 
+
+  # def get_first_name
+  #   @first_name
+  # end
+  #
+  # def set_first_name(first_name)
+  #   @first_name = first_name
+  # end
+
+end
+
+p = Person.new('Will', 'Pickeral')
+```
+
+Let try to access the instance variables again
+
+```
+puts p.first_name
+```
+
+Result
+
+```
+Will
+```
+
+Nice! That's much better.
+
+Lets try to change the name
+
+```ruby
+p.first_name = "Bill"
+puts first_name 
+```
+
+Result
+
+```
+Bill
+```
+
+Yep! That works too!
