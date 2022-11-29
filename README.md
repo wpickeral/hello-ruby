@@ -624,3 +624,80 @@ Bill
 Yep! That works too!
 
 ### Modules
+
+Modules are similar to classes. However, they can not be inherited or serve as super classes.
+Modules are basically a chunk of code that can have methods and constants.
+Modules are written using capitalized CamelCase. Module constants are written using upper case SNAKE_CASE
+Here is an example of a module
+
+```ruby
+
+module Telephone
+
+  PHONE_NUMBER = '123-123-1234'
+
+  def ring
+    puts "Ring Ring!"
+  end
+end
+
+my_cell = Telephone.new
+puts my_cell.ring 
+```
+
+Ruby is not a multi-inheritance language. We get around this by using Modules to extend class functionality.
+
+We can use the `include` keyword to extend class functionality. When modules are used in this way, they are called
+mixins
+
+```ruby
+
+module Telephone
+  TELEPHONE_NUMBER = '123-123-1234'
+
+  def ring
+    puts "Ring Ring!"
+  end
+end
+
+class House
+
+  include Telephone
+
+  def initialize(address)
+    @address = address
+  end
+end
+
+freds_crib = House.new('123 Elm st')
+
+puts freds_crib.ring
+```
+
+Result
+
+```
+Ring Ring!
+```
+
+### Ruby Namespace
+
+You can access a constant in a module directly using the scope resolution operator `::`
+
+```ruby
+puts Telephone::TELEPHONE_NUMBER
+```
+
+Result
+
+```
+123-123-1234
+```
+
+Modules can be imported using the `require` keyword
+
+```ruby
+require 'date'
+
+today = Date.today
+```
